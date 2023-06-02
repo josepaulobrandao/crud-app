@@ -1,13 +1,14 @@
 spring:
   datasource:
-    url: jdbc:h2:mem:mydb
-    username: sa
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/crud_app
+    username: postgres
     password: 123
-    driverClassName: org.h2.Driver
   jpa:
-    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect
     hibernate:
-      ddl-auto: none
-  spring:
-    h2:
-      console.enabled: true
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: true
+  

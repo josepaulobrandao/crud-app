@@ -2,9 +2,9 @@ package io.github.josepaulo.crud.controller;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import io.github.josepaulo.crud.model.Client;
 import io.github.josepaulo.crud.repositories.ClientRepository;
@@ -23,6 +23,12 @@ public class ClientsController {
 	public List<Client> getClient() {
 		return clientRepository.findAll();
 	}
-	
+
+	@PostMapping
+	public ResponseEntity<Client> create(@RequestBody Client client) {
+	Client newClient = clientRepository.save(client);
+	return ResponseEntity.ok(newClient);
+
+	}
 	
 }
