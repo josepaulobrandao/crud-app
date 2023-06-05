@@ -2,9 +2,12 @@ package io.github.josepaulo.crud.DTO;
 
 import io.github.josepaulo.crud.model.Client;
 import io.github.josepaulo.crud.model.Pessoa;
+import org.springframework.http.HttpStatus;
+
+import java.io.Serializable;
 
 
-public class ClientDTO extends Pessoa {
+public class ClientDTO implements Serializable {
     private static final long serialVersionUID = 1L;
 
     private Long id;
@@ -19,6 +22,12 @@ public class ClientDTO extends Pessoa {
         this.id = obj.getId();
         this.name = obj.getNome();
         this.email = obj.getEmail();
+    }
+
+    public ClientDTO(ClientDTO newClient) {
+    }
+
+    public ClientDTO(ClientDTO newClient, HttpStatus httpStatus) {
     }
 
 

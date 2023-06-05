@@ -3,6 +3,8 @@ package io.github.josepaulo.crud.controller;
 import java.util.List;
 
 import io.github.josepaulo.crud.DTO.ClientDTO;
+import io.github.josepaulo.crud.model.Client;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,14 +21,13 @@ public class ClientsController {
 		this.clientRepository = clientRepository;
 	}
 	@GetMapping
-	public List<ClientDTO> getClient() {
+	public List<Client> getClient() {
 		return clientRepository.findAll();
 	}
 
 	@PostMapping
 	public ResponseEntity<ClientDTO> create(@RequestBody ClientDTO clientDTO) {
-	ClientDTO newClient = clientRepository.save(clientDTO);
-	return ResponseEntity.ok(newClient);
+	return ResponseEntity.ok().body(new ClientDTO(clientDTO, HttpStatus.CREATED));
 
 	}
 	

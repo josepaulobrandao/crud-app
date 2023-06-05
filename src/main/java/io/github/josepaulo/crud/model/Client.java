@@ -4,9 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 
+import java.io.Serializable;
+
 
 @Entity
-public class Client extends Pessoa {
+public class Client extends Pessoa implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
