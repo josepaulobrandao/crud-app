@@ -3,10 +3,10 @@ package io.github.josepaulo.crud.model;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+
 
 @Entity
-public class Client {
+public class Client extends Pessoa {
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue

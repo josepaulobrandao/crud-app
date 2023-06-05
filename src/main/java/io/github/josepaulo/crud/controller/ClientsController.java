@@ -2,11 +2,10 @@ package io.github.josepaulo.crud.controller;
 
 import java.util.List;
 
-import org.springframework.http.HttpStatusCode;
+import io.github.josepaulo.crud.DTO.ClientDTO;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import io.github.josepaulo.crud.model.Client;
 import io.github.josepaulo.crud.repositories.ClientRepository;
 
 @RestController
@@ -20,13 +19,13 @@ public class ClientsController {
 		this.clientRepository = clientRepository;
 	}
 	@GetMapping
-	public List<Client> getClient() {
+	public List<ClientDTO> getClient() {
 		return clientRepository.findAll();
 	}
 
 	@PostMapping
-	public ResponseEntity<Client> create(@RequestBody Client client) {
-	Client newClient = clientRepository.save(client);
+	public ResponseEntity<ClientDTO> create(@RequestBody ClientDTO clientDTO) {
+	ClientDTO newClient = clientRepository.save(clientDTO);
 	return ResponseEntity.ok(newClient);
 
 	}
